@@ -20,9 +20,9 @@ public class UsuarioService {
 		List<UsuarioEntity> usuarios = usuarioRepository.findAll();
 		return usuarios.stream().map(UsuarioDTO::new).toList();
 	}
-	public void inserir (UsuarioDTO usuario) {
-		UsuarioEntity usuarioEntity = new UsuarioEntity(usuario);
-		usuarioRepository.save(usuarioEntity);
+	public UsuarioDTO inserir(UsuarioDTO usuario) {
+	    UsuarioEntity usuarioEntity = new UsuarioEntity(usuario);
+	    return new UsuarioDTO(usuarioRepository.save(usuarioEntity));
 	}
 	public UsuarioDTO alterar(UsuarioDTO usuario) {
 		UsuarioEntity usuarioEntity = new UsuarioEntity(usuario);

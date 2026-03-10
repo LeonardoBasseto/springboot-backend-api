@@ -19,9 +19,9 @@ public class RecursoService {
 		List<RecursoEntity> recurso = recursoRepository.findAll();
 		return recurso.stream().map(RecursoDTO::new).toList();
 	}
-	public void inserir (RecursoDTO recurso) {
-		RecursoEntity RecursoEntity = new RecursoEntity(recurso);
-		recursoRepository.save(RecursoEntity);
+	public RecursoDTO inserir(RecursoDTO recurso) {
+		RecursoEntity recursoEntity = new RecursoEntity(recurso);
+	    return new RecursoDTO(recursoRepository.save(recursoEntity));
 	}
 	public RecursoDTO alterar(RecursoDTO Recurso) {
 		RecursoEntity RecursoEntity = new RecursoEntity(Recurso);

@@ -19,9 +19,9 @@ public class PerfilService {
 		List<PerfilEntity> perfis = perfilRepository.findAll();
 		return perfis.stream().map(PerfilDTO::new).toList();
 	}
-	public void inserir(PerfilDTO perfil) {
-		PerfilEntity perfilEntity = new PerfilEntity(perfil); 
-		perfilRepository.save(perfilEntity);
+	public PerfilDTO inserir(PerfilDTO perfil) {
+		PerfilEntity perfilEntity = new PerfilEntity(perfil);
+	    return new PerfilDTO(perfilRepository.save(perfilEntity));
 	}
 	public PerfilDTO alterar(PerfilDTO perfil) {
 		PerfilEntity perfilEntity = new PerfilEntity(perfil); 

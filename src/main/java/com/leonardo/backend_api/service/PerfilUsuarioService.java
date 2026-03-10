@@ -1,6 +1,6 @@
 package com.leonardo.backend_api.service;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +19,9 @@ public class PerfilUsuarioService {
 		List<PerfilUsuarioEntity> perfilUsuario = perfilUsuarioRepository.findAll();
 		return perfilUsuario.stream().map(PerfilUsuarioDTO:: new).toList();
 	}
-	public void inserir(PerfilUsuarioDTO perfilUsuario) {
-		PerfilUsuarioEntity perfilUsuarioEntity = new PerfilUsuarioEntity(perfilUsuario);
-		perfilUsuarioRepository.save(perfilUsuarioEntity);
+	public PerfilUsuarioDTO inserir(PerfilUsuarioDTO perfilUsuario) {
+		PerfilUsuarioEntity PerfilUsuarioEntity = new PerfilUsuarioEntity(perfilUsuario);
+	    return new PerfilUsuarioDTO(perfilUsuarioRepository.save(PerfilUsuarioEntity));
 	}
 	public PerfilUsuarioDTO alterar(PerfilUsuarioDTO perfilUsuario) {
 		PerfilUsuarioEntity perfilUsuarioEntity = new PerfilUsuarioEntity(perfilUsuario);
