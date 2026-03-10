@@ -17,7 +17,7 @@ import com.leonardo.backend_api.dto.UsuarioDTO;
 import com.leonardo.backend_api.service.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 	
 	@Autowired
@@ -27,15 +27,19 @@ public class UsuarioController {
 	public List<UsuarioDTO> listarTodos(){
 	return usuarioService.ListarTodos();
 	}
+	@GetMapping("/{id}")
+	public UsuarioDTO buscarPorId(@PathVariable Long id){
+	    return usuarioService.buscarPorId(id);
+	}
 	@PostMapping
 	public void inserir(@RequestBody UsuarioDTO usuario) {
 		usuarioService.inserir(usuario);
 	}
-	@PutMapping
-	public UsuarioDTO alterar(@RequestBody UsuarioDTO usuario) {
+	@PutMapping(value = "/{id}")
+	public UsuarioDTO alterar(@PathVariable Long id,@RequestBody UsuarioDTO usuario) {
 		return usuarioService.alterar(usuario);
 	}
-	@DeleteMapping("/{id}")
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> excluir (@PathVariable Long id){
 		usuarioService.excluir(id);
 		return ResponseEntity.ok().build();

@@ -18,7 +18,7 @@ import com.leonardo.backend_api.service.RecursoService;
 
 
 	@RestController
-	@RequestMapping(value = "/recurso")
+	@RequestMapping("/recursos")
 	public class RecursoController {
 		
 		@Autowired
@@ -28,12 +28,16 @@ import com.leonardo.backend_api.service.RecursoService;
 		public List<RecursoDTO> ListarTodos(){
 		return recursoService.ListarTodos();
 		}
+		@GetMapping("/{id}")
+		public RecursoDTO buscarPorId(@PathVariable Long id){
+		    return recursoService.buscarPorId(id);
+		}
 		@PostMapping
 		public void inserir(@RequestBody RecursoDTO recurso) {
 			recursoService.inserir(recurso);
 		}
-		@PutMapping
-		public RecursoDTO alterar(@RequestBody RecursoDTO recurso) {
+		@PutMapping("/{id}")
+		public RecursoDTO alterar(@PathVariable Long id, @RequestBody RecursoDTO recurso) {
 			return recursoService.alterar(recurso);
 		}
 		@DeleteMapping("/{id}")

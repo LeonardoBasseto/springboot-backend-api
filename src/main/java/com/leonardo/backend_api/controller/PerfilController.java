@@ -18,7 +18,7 @@ import com.leonardo.backend_api.service.PerfilService;
 
 
 	@RestController
-	@RequestMapping(value = "/perfil")
+	@RequestMapping("/perfis")
 	public class PerfilController {
 		
 		@Autowired
@@ -28,12 +28,16 @@ import com.leonardo.backend_api.service.PerfilService;
 		public List<PerfilDTO> listarTodos(){
 		return perfilService.listarTodos();
 		}
+		@GetMapping("/{id}")
+		public PerfilDTO buscarPorId(@PathVariable Long id){
+		    return perfilService.buscarPorId(id);
+		}
 		@PostMapping
 		public void inserir(@RequestBody PerfilDTO perfil) {
 			perfilService.inserir(perfil);
 		}
-		@PutMapping
-		public PerfilDTO alterar(@RequestBody PerfilDTO perfil) {
+		@PutMapping("/{id}")
+		public PerfilDTO alterar(@PathVariable Long id, @RequestBody PerfilDTO perfil) {
 			return perfilService.alterar(perfil);
 		}
 		@DeleteMapping("/{id}")

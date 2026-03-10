@@ -18,7 +18,7 @@ import com.leonardo.backend_api.dto.PerfilUsuarioDTO;
 import com.leonardo.backend_api.service.PerfilUsuarioService;
 
 @RestController
-@RequestMapping(value = "/perfil-usuario")
+@RequestMapping("/perfil-usuario")
 @CrossOrigin
 public class PerfilUsuarioController {
 
@@ -29,14 +29,18 @@ public class PerfilUsuarioController {
 	public List<PerfilUsuarioDTO> listarTodos(){
 		return perfilUsuarioService.listarTodos();
 	}
+	@GetMapping("/{id}")
+	public PerfilUsuarioDTO buscarPorId(@PathVariable Long id){
+	    return perfilUsuarioService.buscarPorId(id);
+	}
 	
 	@PostMapping
 	public void inserir (@RequestBody PerfilUsuarioDTO perfilUsuario) {
 	perfilUsuarioService.inserir(perfilUsuario);
 	}
 	
-	@PutMapping
-	public PerfilUsuarioDTO alterar(@RequestBody PerfilUsuarioDTO perfilUsuario) {
+	@PutMapping("/{id}")
+	public PerfilUsuarioDTO alterar(@PathVariable Long id, @RequestBody PerfilUsuarioDTO perfilUsuario) {
 		return 	perfilUsuarioService.alterar(perfilUsuario);
 	}
 	
