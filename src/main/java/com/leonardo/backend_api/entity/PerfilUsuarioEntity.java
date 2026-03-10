@@ -17,8 +17,6 @@ import jakarta.persistence.Table;
 public class PerfilUsuarioEntity {
 	public PerfilUsuarioEntity (){}
 
-
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

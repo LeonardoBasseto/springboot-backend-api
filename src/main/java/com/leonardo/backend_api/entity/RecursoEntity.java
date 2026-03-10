@@ -1,46 +1,51 @@
 package com.leonardo.backend_api.entity;
 
-import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import com.leonardo.backend_api.dto.PerfilDTO;
+import com.leonardo.backend_api.dto.RecursoDTO;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_perfil")
-public class PerfilEntity {
-public PerfilEntity (){}
+@Table(name = "tb_recurso")
+public class RecursoEntity {
+	public RecursoEntity (){}
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-@Column(nullable = false)
-	private String descricao;
-
-@OneToMany(mappedBy = "perfil")
-private List<PerfilUsuarioEntity> usuarios;
+	private String nome;
+	private String chave;
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
+	public String getChave() {
+		return chave;
+	}
+	public void setChave(String chave) {
+		this.chave = chave;
+	}
+	
+	public RecursoEntity(RecursoDTO recurso) {
+		BeanUtils.copyProperties(recurso, this);
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -53,12 +58,7 @@ private List<PerfilUsuarioEntity> usuarios;
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PerfilEntity other = (PerfilEntity) obj;
+		RecursoEntity other = (RecursoEntity) obj;
 		return Objects.equals(id, other.id);
 	}
-
-public PerfilEntity(PerfilDTO perfil) {
-	BeanUtils.copyProperties(perfil, this);
-}
-	
 }

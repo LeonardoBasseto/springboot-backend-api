@@ -34,15 +34,7 @@ public class UsuarioEntity {
 	
 	@OneToMany(mappedBy = "usuario")
 	private List<PerfilUsuarioEntity> perfis;
-	
-	public UsuarioEntity(Long id, String nome, String login, String senha, String email) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
-		this.email = email;
-	}
+
 	public Long getId() {
 		return id;
 	}
