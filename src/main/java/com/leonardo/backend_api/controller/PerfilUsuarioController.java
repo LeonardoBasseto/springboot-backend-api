@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,31 +14,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leonardo.backend_api.dto.UsuarioDTO;
-import com.leonardo.backend_api.service.UsuarioService;
+import com.leonardo.backend_api.dto.PerfilUsuarioDTO;
+import com.leonardo.backend_api.service.PerfilUsuarioService;
 
 @RestController
-@RequestMapping(value = "/usuario")
-public class UsuarioController {
-	
+@RequestMapping(value = "/perfil-usuario")
+@CrossOrigin
+public class PerfilUsuarioController {
+
 	@Autowired
-	private UsuarioService usuarioService;
-	
+	private PerfilUsuarioService perfilUsuarioService;
+
 	@GetMapping
-	public List<UsuarioDTO> listarTodos(){
-	return usuarioService.ListarTodos();
+	public List<PerfilUsuarioDTO> listarTodos(){
+		return perfilUsuarioService.listarTodos();
 	}
+	
 	@PostMapping
-	public void inserir(@RequestBody UsuarioDTO usuario) {
-		usuarioService.inserir(usuario);
+	public void inserir (@RequestBody PerfilUsuarioDTO perfilUsuario) {
+	perfilUsuarioService.inserir(perfilUsuario);
 	}
+	
 	@PutMapping
-	public UsuarioDTO alterar(@RequestBody UsuarioDTO usuario) {
-		return usuarioService.alterar(usuario);
+	public PerfilUsuarioDTO alterar(@RequestBody PerfilUsuarioDTO perfilUsuario) {
+		return 	perfilUsuarioService.alterar(perfilUsuario);
 	}
+	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> excluir (@PathVariable Long id){
-		usuarioService.excluir(id);
+	public ResponseEntity<Void> excluir(@PathVariable Long id) {
+		perfilUsuarioService.excluir(id);
 		return ResponseEntity.ok().build();
 	}
 }

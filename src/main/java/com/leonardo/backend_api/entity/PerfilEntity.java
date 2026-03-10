@@ -1,5 +1,6 @@
 package com.leonardo.backend_api.entity;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
@@ -11,10 +12,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_PERFIL")
+@Table(name = "tb_perfil")
 public class PerfilEntity {
 public PerfilEntity (){}
 
@@ -24,6 +26,9 @@ public PerfilEntity (){}
 
 @Column(nullable = false)
 	private String descricao;
+
+@OneToMany(mappedBy = "perfil")
+private List<PerfilUsuarioEntity> usuarios;
 
 	public PerfilEntity(Long id, String descricao) {
 		super();

@@ -16,17 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.leonardo.backend_api.dto.PerfilDTO;
 import com.leonardo.backend_api.service.PerfilService;
 
-public class PerfilController {
 
 	@RestController
 	@RequestMapping(value = "/perfil")
-	public class UsuarioController {
+	public class PerfilController {
 		
 		@Autowired
 		private PerfilService perfilService;
 		
 		@GetMapping
-		public List<PerfilDTO> ListarTodos(){
+		public List<PerfilDTO> listarTodos(){
 		return perfilService.listarTodos();
 		}
 		@PostMapping
@@ -44,4 +43,4 @@ public class PerfilController {
 		}
 	}
 
-}
+

@@ -1,5 +1,6 @@
 package com.leonardo.backend_api.entity;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
@@ -11,10 +12,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_USUARIO")
+@Table(name = "tb_usuario")
 public class UsuarioEntity {
 	public UsuarioEntity (){}
 
@@ -30,9 +32,8 @@ public class UsuarioEntity {
 	@Column(nullable = false)
 	private String email;
 	
-	public UsuarioEntity(UsuarioDTO usuario) {
-		BeanUtils.copyProperties(usuario, this);
-	}
+	@OneToMany(mappedBy = "usuario")
+	private List<PerfilUsuarioEntity> perfis;
 	
 	public UsuarioEntity(Long id, String nome, String login, String senha, String email) {
 		super();
@@ -71,6 +72,9 @@ public class UsuarioEntity {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public UsuarioEntity(UsuarioDTO usuario) {
+		BeanUtils.copyProperties(usuario, this);
 	}
 	@Override
 	public int hashCode() {
