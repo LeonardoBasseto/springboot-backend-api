@@ -65,7 +65,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 		})
 		@PutMapping("/{id}")
 		public PerfilDTO alterar(@PathVariable Long id, @RequestBody PerfilDTO perfil) {
-			return perfilService.alterar(perfil);
+			return perfilService.alterar(id, perfil);
 		}
 		
 		@Operation(summary = "Excluir perfil", description = "Excluir os dados de um perfil")

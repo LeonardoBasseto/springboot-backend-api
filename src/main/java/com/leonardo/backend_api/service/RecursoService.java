@@ -23,9 +23,11 @@ public class RecursoService {
 		RecursoEntity recursoEntity = new RecursoEntity(recurso);
 	    return new RecursoDTO(recursoRepository.save(recursoEntity));
 	}
-	public RecursoDTO alterar(RecursoDTO Recurso) {
-		RecursoEntity RecursoEntity = new RecursoEntity(Recurso);
-		return new RecursoDTO(recursoRepository.save(RecursoEntity));
+	public RecursoDTO alterar(Long id, RecursoDTO recurso) {
+	    RecursoEntity entity = recursoRepository.findById(id)
+	        .orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
+	    entity.setNome(recurso.getNome()); 
+	    return new RecursoDTO(recursoRepository.save(entity));
 	}
 	public void excluir(Long id) {
 		RecursoEntity Recurso = recursoRepository.findById(id).get();

@@ -1,7 +1,5 @@
 package com.leonardo.backend_api.entity;
 
-import org.springframework.beans.BeanUtils;
-
 import com.leonardo.backend_api.dto.PerfilUsuarioDTO;
 
 import jakarta.persistence.Entity;
@@ -48,13 +46,9 @@ public class PerfilUsuarioEntity {
 		this.perfil = perfil;
 	}
 		
-	public PerfilUsuarioEntity(PerfilUsuarioDTO perfilUsuario) {
-		BeanUtils.copyProperties(perfilUsuario, this);		
-		if(perfilUsuario != null && perfilUsuario.getUsuario() != null) {
-			this.usuario = new UsuarioEntity(perfilUsuario.getUsuario());
-		}
-		if(perfilUsuario != null && perfilUsuario.getPerfil() != null) {
-			this.perfil = new PerfilEntity(perfilUsuario.getPerfil());
-		}
+	public PerfilUsuarioEntity(PerfilUsuarioDTO dto, UsuarioEntity usuario, PerfilEntity perfil) {
+		this.id = dto.getId();
+		this.usuario = usuario;
+		this.perfil = perfil;
 	}
 }

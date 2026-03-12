@@ -2,12 +2,16 @@ package com.leonardo.backend_api.dto;
 
 import org.springframework.beans.BeanUtils;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.leonardo.backend_api.entity.PerfilEntity;
 
 public class PerfilDTO {
 	public PerfilDTO () {}
 	
+    @JsonProperty(access = Access.READ_ONLY)
 	private Long id;
+    
 	private String descricao;
 	
 	

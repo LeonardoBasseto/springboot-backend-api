@@ -66,7 +66,7 @@ public class PerfilUsuarioController {
 	})
 	@PutMapping("/{id}")
 	public PerfilUsuarioDTO alterar(@PathVariable Long id, @RequestBody PerfilUsuarioDTO perfilUsuario) {
-		return 	perfilUsuarioService.alterar(perfilUsuario);
+		return 	perfilUsuarioService.alterar(id, perfilUsuario);
 	}
 	
 	@Operation(summary = "Excluir Vínculo", description = "Excluir os dados de um Vínculo")

@@ -65,7 +65,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 		})
 		@PutMapping("/{id}")
 		public RecursoDTO alterar(@PathVariable Long id, @RequestBody RecursoDTO recurso) {
-			return recursoService.alterar(recurso);
+			return recursoService.alterar(id, recurso);
 		}
 		
 		@Operation(summary = "Excluir recurso", description = "Excluir os dados de um recurso")

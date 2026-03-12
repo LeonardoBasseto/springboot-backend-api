@@ -64,7 +64,7 @@ public class UsuarioController {
 	})
 	@PutMapping("/{id}")
 	public UsuarioDTO alterar(@PathVariable Long id,@RequestBody UsuarioDTO usuario) {
-		return usuarioService.alterar(usuario);
+		return usuarioService.alterar(id, usuario);
 	}
 	
 	@Operation(summary = "Excluir usuário", description = "Excluir os dados de um usuário")
