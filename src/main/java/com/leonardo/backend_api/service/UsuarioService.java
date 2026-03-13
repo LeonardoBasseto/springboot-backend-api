@@ -17,6 +17,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	public List<UsuarioDTO> ListarTodos(){
