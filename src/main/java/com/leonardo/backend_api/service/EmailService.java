@@ -24,9 +24,12 @@ public class EmailService {
 			simpleMailMessage.setSubject(assunto);
 			simpleMailMessage.setText(mensagem);
 			javaMailSender.send(simpleMailMessage);
-			return "Email enviado";
-		}catch(Exception e) {
-			return "Erro ao tentar enviar email " + e.getLocalizedMessage();
-		}
+			  System.out.println("✅ Email enviado para: " + destinatario);
+	            return "Email enviado";
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            System.out.println("Erro ao enviar email: " + e.getMessage());
+	            return "Erro ao tentar enviar email " + e.getLocalizedMessage();
+	        }
+	    }
 	}
-}

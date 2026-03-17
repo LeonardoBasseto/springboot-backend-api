@@ -1,5 +1,6 @@
 package com.leonardo.backend_api.entity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,6 +35,11 @@ public class UsuarioEntity {
 	private String senha;
 	@Column(nullable = false)
 	private String email;
+	
+	@Column(name = "token_confirmacao")
+	private String tokenConfirmacao;
+	@Column(name = "token_expiracao")
+	private LocalDateTime tokenExpiracao;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
@@ -81,6 +87,18 @@ public class UsuarioEntity {
 	}
 	public void setSituacao(TipoSituacaoUsuario situacao) {
 		this.situacao = situacao;
+	}
+	public String getTokenConfirmacao() {
+		return tokenConfirmacao;
+	}
+	public void setTokenConfirmacao(String tokenConfirmacao) {
+		this.tokenConfirmacao = tokenConfirmacao;
+	}
+	public LocalDateTime getTokenExpiracao() {
+		return tokenExpiracao;
+	}
+	public void setTokenExpiracao(LocalDateTime tokenExpiracao) {
+		this.tokenExpiracao = tokenExpiracao;
 	}
 	@Override
 	public int hashCode() {

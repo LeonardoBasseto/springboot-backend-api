@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.leonardo.backend_api.dto.UsuarioDTO;
 import com.leonardo.backend_api.entity.UsuarioEntity;
-import com.leonardo.backend_api.entity.enums.TipoSituacaoUsuario;
 import com.leonardo.backend_api.repository.UsuarioRepository;
 
 @Service
@@ -19,9 +18,6 @@ public class UsuarioService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-    
-    @Autowired
-	private EmailService emailService;
 
     public List<UsuarioDTO> listarTodos() {
         return usuarioRepository.findAll()
@@ -35,23 +31,6 @@ public class UsuarioService {
         usuarioEntity.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return new UsuarioDTO(usuarioRepository.save(usuarioEntity));
     }
-
-    public UsuarioDTO inserirNovoUsuario(UsuarioDTO usuario) {
-        UsuarioEntity usuarioEntity = new UsuarioEntity(usuario);
-        usuarioEntity.setId(null);
-        usuarioEntity.setSituacao(TipoSituacaoUsuario.PENDENTE);
-        usuarioEntity.setSenha(passwordEncoder.encode(usuario.getSenha()));
-        
-        UsuarioDTO usuarioSalvo = new UsuarioDTO(usuarioRepository.save(usuarioEntity));
-
-        emailService.enviarEmailTexto(
-            usuario.getEmail(),
-            "Novo usuário cadastrado",
-            "Você está recebendo um email de cadastro"
-        );
-
-        return usuarioSalvo;
-    }  
 
     public UsuarioDTO alterar(Long id, UsuarioDTO usuario) {
         UsuarioEntity usuarioEntity = usuarioRepository.findById(id)

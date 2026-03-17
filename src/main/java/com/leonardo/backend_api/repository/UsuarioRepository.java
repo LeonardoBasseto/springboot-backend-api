@@ -8,4 +8,5 @@ import com.leonardo.backend_api.entity.UsuarioEntity;
 
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
 Optional<UsuarioEntity> findByLogin(String login);
+Optional<UsuarioEntity> findByTokenConfirmacao(String tokenConfirmacao);
 }

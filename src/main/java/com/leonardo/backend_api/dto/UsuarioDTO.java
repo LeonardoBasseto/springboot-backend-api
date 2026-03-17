@@ -1,11 +1,13 @@
 package com.leonardo.backend_api.dto;
 
-import org.springframework.beans.BeanUtils; 
+import org.springframework.beans.BeanUtils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.leonardo.backend_api.entity.UsuarioEntity;
 import com.leonardo.backend_api.entity.enums.TipoSituacaoUsuario;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class UsuarioDTO {
 	public UsuarioDTO () {}
@@ -18,6 +20,8 @@ public class UsuarioDTO {
 	private String login;
 	private String email;
     private String senha;
+    
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private TipoSituacaoUsuario situacao;
 	
 	public UsuarioDTO(UsuarioEntity usuario) {
