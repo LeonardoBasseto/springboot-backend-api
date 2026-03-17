@@ -1,9 +1,11 @@
 package com.leonardo.backend_api.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.leonardo.backend_api.dto.UsuarioDTO;
 import com.leonardo.backend_api.entity.UsuarioEntity;
 import com.leonardo.backend_api.entity.enums.TipoSituacaoUsuario;
@@ -17,6 +19,9 @@ public class UsuarioService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    
+    @Autowired
+	private EmailService emailService;
 
     public List<UsuarioDTO> listarTodos() {
         return usuarioRepository.findAll()
@@ -36,10 +41,17 @@ public class UsuarioService {
         usuarioEntity.setId(null);
         usuarioEntity.setSituacao(TipoSituacaoUsuario.PENDENTE);
         usuarioEntity.setSenha(passwordEncoder.encode(usuario.getSenha()));
-        return new UsuarioDTO(usuarioRepository.save(usuarioEntity));
-    }
-    
-    
+        
+        UsuarioDTO usuarioSalvo = new UsuarioDTO(usuarioRepository.save(usuarioEntity));
+
+        emailService.enviarEmailTexto(
+            usuario.getEmail(),
+            "Novo usuário cadastrado",
+            "Você está recebendo um email de cadastro"
+        );
+
+        return usuarioSalvo;
+    }  
 
     public UsuarioDTO alterar(Long id, UsuarioDTO usuario) {
         UsuarioEntity usuarioEntity = usuarioRepository.findById(id)
