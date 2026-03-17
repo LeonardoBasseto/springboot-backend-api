@@ -1,13 +1,11 @@
 package com.leonardo.backend_api.dto;
 
-import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanUtils; 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.leonardo.backend_api.entity.UsuarioEntity;
 import com.leonardo.backend_api.entity.enums.TipoSituacaoUsuario;
-
-import jakarta.persistence.Enumerated;
 
 public class UsuarioDTO {
 	public UsuarioDTO () {}

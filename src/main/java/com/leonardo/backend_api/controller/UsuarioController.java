@@ -33,7 +33,7 @@ public class UsuarioController {
 	@ApiResponse(responseCode = "200", description = "Lista retornada com sucesso")
 	@GetMapping
 	public List<UsuarioDTO> listarTodos(){
-	return usuarioService.ListarTodos();
+	return usuarioService.listarTodos();
 	}
 	
 	@Operation(summary = "Buscar usuários por ID", description = "Retorna o ID do usuário especificado")

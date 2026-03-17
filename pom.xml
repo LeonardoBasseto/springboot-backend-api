@@ -62,13 +62,13 @@
 			<version>0.12.6</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- VALIDATION -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-		
+
 		<!-- SWAGGER / OPENAPI -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -89,6 +89,12 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+
+		<!-- EMAIL -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 		<!-- TESTES -->

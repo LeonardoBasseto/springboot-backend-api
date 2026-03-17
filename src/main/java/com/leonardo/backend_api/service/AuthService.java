@@ -21,8 +21,8 @@ public class AuthService {
 
     public AcessDTO login(AuthenticationDTO authDto) {
         try {
-            UsernamePasswordAuthenticationToken userAuth =
-                    new UsernamePasswordAuthenticationToken(authDto.getUsername(), authDto.getPassword());
+        	UsernamePasswordAuthenticationToken userAuth =
+        	        new UsernamePasswordAuthenticationToken(authDto.getlogin(), authDto.getsenha());
 
             Authentication authentication = authenticationManager.authenticate(userAuth);
 

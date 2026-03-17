@@ -34,7 +34,7 @@ public class PermissaoPerfilRecursoController {
 	@ApiResponse(responseCode = "200", description = "Lista retornada com sucesso")
 	@GetMapping
 	public List<PermissaoPerfilRecursoDTO> ListarTodos(){
-		return permissaoPerfilRecursoService.ListarTodos();
+		return permissaoPerfilRecursoService.listarTodos();
 	}
 	
 	@Operation(summary = "Buscar a permissão por ID", description = "Retorna a permissão especificada pelo ID")

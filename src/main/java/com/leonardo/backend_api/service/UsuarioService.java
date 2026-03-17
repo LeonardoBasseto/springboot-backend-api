@@ -38,6 +38,8 @@ public class UsuarioService {
         usuarioEntity.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return new UsuarioDTO(usuarioRepository.save(usuarioEntity));
     }
+    
+    
 
     public UsuarioDTO alterar(Long id, UsuarioDTO usuario) {
         UsuarioEntity usuarioEntity = usuarioRepository.findById(id)

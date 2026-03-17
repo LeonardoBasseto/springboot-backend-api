@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 		@ApiResponse(responseCode = "200", description = "Lista retornada com sucesso")
 		@GetMapping
 		public List<RecursoDTO> ListarTodos(){
-		return recursoService.ListarTodos();
+		return recursoService.listarTodos();
 		}
 		
 		@Operation(summary = "Buscar recursos por ID", description = "Retorna o ID do recurso especificado")
