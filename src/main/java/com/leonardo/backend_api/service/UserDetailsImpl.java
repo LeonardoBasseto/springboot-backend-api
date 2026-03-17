@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.leonardo.backend_api.entity.UsuarioEntity;
  
 public class UserDetailsImpl implements UserDetails{
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	

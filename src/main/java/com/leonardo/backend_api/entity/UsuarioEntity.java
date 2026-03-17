@@ -6,9 +6,12 @@ import java.util.Objects;
 import org.springframework.beans.BeanUtils;
 
 import com.leonardo.backend_api.dto.UsuarioDTO;
+import com.leonardo.backend_api.entity.enums.TipoSituacaoUsuario;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +34,10 @@ public class UsuarioEntity {
 	private String senha;
 	@Column(nullable = false)
 	private String email;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private TipoSituacaoUsuario situacao;
 	
 	@OneToMany(mappedBy = "usuario")
 	private List<PerfilUsuarioEntity> perfis;
@@ -67,6 +74,13 @@ public class UsuarioEntity {
 	}
 	public UsuarioEntity(UsuarioDTO usuario) {
 		BeanUtils.copyProperties(usuario, this);
+	}
+	
+	public TipoSituacaoUsuario getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(TipoSituacaoUsuario situacao) {
+		this.situacao = situacao;
 	}
 	@Override
 	public int hashCode() {

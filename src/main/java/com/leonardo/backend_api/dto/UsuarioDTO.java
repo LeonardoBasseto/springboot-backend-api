@@ -5,6 +5,9 @@ import org.springframework.beans.BeanUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.leonardo.backend_api.entity.UsuarioEntity;
+import com.leonardo.backend_api.entity.enums.TipoSituacaoUsuario;
+
+import jakarta.persistence.Enumerated;
 
 public class UsuarioDTO {
 	public UsuarioDTO () {}
@@ -17,7 +20,7 @@ public class UsuarioDTO {
 	private String login;
 	private String email;
     private String senha;
-
+    private TipoSituacaoUsuario situacao;
 	
 	public UsuarioDTO(UsuarioEntity usuario) {
 		BeanUtils.copyProperties(usuario, this);
@@ -55,4 +58,13 @@ public class UsuarioDTO {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public TipoSituacaoUsuario getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(TipoSituacaoUsuario situacao) {
+		this.situacao = situacao;
+	}
+	
 }
