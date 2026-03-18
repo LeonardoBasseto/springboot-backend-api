@@ -1,8 +1,16 @@
 HELP.md
 target/
+
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+### Segredos / Configurações locais ###
+*-local.properties
+application-local.properties
+application-secret.properties
+.env
+.env.*
 
 ### STS ###
 .apt_generated
@@ -31,3 +39,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Docker ###
+.env
