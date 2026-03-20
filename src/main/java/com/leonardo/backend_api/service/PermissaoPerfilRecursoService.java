@@ -39,18 +39,6 @@ public class PermissaoPerfilRecursoService {
         return new PermissaoPerfilRecursoDTO(permissaoPerfilRecursoRepository.save(entity));
     }
 
-    public PermissaoPerfilRecursoDTO alterar(Long id, PermissaoPerfilRecursoDTO dto) {
-        PermissaoPerfilRecursoEntity entity = permissaoPerfilRecursoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("PermissaoPerfilRecurso não encontrado: " + id));
-        PerfilEntity perfil = perfilRepository.findById(dto.getPerfilId())
-                .orElseThrow(() -> new RuntimeException("Perfil não encontrado: " + dto.getPerfilId()));
-        RecursoEntity recurso = recursoRepository.findById(dto.getRecursoId())
-                .orElseThrow(() -> new RuntimeException("Recurso não encontrado: " + dto.getRecursoId()));
-        entity.setPerfil(perfil);
-        entity.setRecurso(recurso);
-        return new PermissaoPerfilRecursoDTO(permissaoPerfilRecursoRepository.save(entity));
-    }
-
     public void excluir(Long id) {
         PermissaoPerfilRecursoEntity entity = permissaoPerfilRecursoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("PermissaoPerfilRecurso não encontrado: " + id));

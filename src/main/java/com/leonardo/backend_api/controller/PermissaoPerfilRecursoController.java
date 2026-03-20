@@ -1,6 +1,6 @@
 package com.leonardo.backend_api.controller;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,16 +36,6 @@ public class PermissaoPerfilRecursoController {
 		return permissaoPerfilRecursoService.listarTodos();
 	}
 	
-	@Operation(summary = "Buscar a permissão por ID", description = "Retorna a permissão especificada pelo ID")
-	@ApiResponses({
-	@ApiResponse(responseCode = "200", description = "ID encontrado com sucesso"),
-	@ApiResponse(responseCode = "404", description = "Permissão não encontrada")
-	})
-	@GetMapping("/{id}")
-	public PermissaoPerfilRecursoDTO buscarPorId (@PathVariable Long id) {
-		return permissaoPerfilRecursoService.buscarPorId(id);
-	}
-	
 	@Operation(summary = "Inserir permissões", description = "Cria uma nova permissão")
 	@ApiResponses({
 	@ApiResponse(responseCode = "200", description = "Permissão criada com sucesso"),
@@ -56,16 +45,6 @@ public class PermissaoPerfilRecursoController {
 	public ResponseEntity<PermissaoPerfilRecursoDTO> inserir(@RequestBody PermissaoPerfilRecursoDTO permissaoPerfilRecurso) {
 		PermissaoPerfilRecursoDTO novo = permissaoPerfilRecursoService.inserir(permissaoPerfilRecurso);
 	    return ResponseEntity.status(201).body(novo);
-	}
-	
-	@Operation(summary = "Alterar permissões", description = "Altera uma permissão")
-	@ApiResponses({
-	@ApiResponse(responseCode = "200", description = "Permissão alterada com sucesso"),
-	@ApiResponse(responseCode = "404", description = "Permissão não encontrada")
-	})
-	@PutMapping("/{id}")
-	public PermissaoPerfilRecursoDTO alterar(@PathVariable Long id, @RequestBody PermissaoPerfilRecursoDTO permissaoPerfilRecurso) {
-		return permissaoPerfilRecursoService.alterar(id, permissaoPerfilRecurso);
 	}
 	
 	@Operation(summary = "Excluir permissões", description = "Exclui uma permissão")
