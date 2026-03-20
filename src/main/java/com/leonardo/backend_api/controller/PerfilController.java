@@ -37,16 +37,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 		return perfilService.listarTodos();
 		}
 		
-		@Operation(summary = "Buscar perfis por ID", description = "Retorna o ID do perfil especificado")
-		@ApiResponses({
-		@ApiResponse(responseCode = "200", description = "Perfil encontrado"),
-		@ApiResponse(responseCode = "404", description = "Perfil não encontrado")
-		})
-		@GetMapping("/{id}")
-		public PerfilDTO buscarPorId(@PathVariable Long id){
-		    return perfilService.buscarPorId(id);
-		}
-		
 		@Operation(summary = "Inserir perfis", description = "Cria um novo perfil")
 		@ApiResponses({
 		@ApiResponse(responseCode = "200", description = "Perfil criado com sucesso"),
@@ -66,17 +56,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 		@PutMapping("/{id}")
 		public PerfilDTO alterar(@PathVariable Long id, @RequestBody PerfilDTO perfil) {
 			return perfilService.alterar(id, perfil);
-		}
-		
-		@Operation(summary = "Excluir perfil", description = "Excluir os dados de um perfil")
-		@ApiResponses({
-		@ApiResponse(responseCode = "200", description = "perfil excluido"),
-		@ApiResponse(responseCode = "404", description = "perfil não encontrado")
-		})
-		@DeleteMapping("/{id}")
-		public ResponseEntity<Void> excluir(@PathVariable Long id){
-			perfilService.excluir(id);
-			return ResponseEntity.ok().build();
 		}
 	}
 

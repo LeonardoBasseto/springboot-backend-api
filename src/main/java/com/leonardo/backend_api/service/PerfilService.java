@@ -32,12 +32,6 @@ public class PerfilService {
         return new PerfilDTO(perfilRepository.save(perfilEntity));
     }
 
-    public void excluir(Long id) {
-        PerfilEntity perfil = perfilRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Perfil não encontrado: " + id));
-        perfilRepository.delete(perfil);
-    }
-
     public PerfilDTO buscarPorId(Long id) {
         return new PerfilDTO(perfilRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Perfil não encontrado: " + id)));
