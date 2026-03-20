@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/perfil-usuario")
 @CrossOrigin
-@Tag(name = "Perfil Usuário", description = "Relacionamento entre perfil e usuário")
+@Tag(name = "D - Perfil Usuário", description = "Relacionamento entre perfil e usuário")
 public class PerfilUsuarioController {
 
 	@Autowired

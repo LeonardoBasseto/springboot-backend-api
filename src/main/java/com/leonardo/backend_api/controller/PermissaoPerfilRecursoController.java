@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/permissões")
-@Tag(name = "Permissões de Perfil e Recurso", description = "Gerenciamento de permissões entre perfil e recurso")
+@Tag(name = "F - Permissões de Perfil e Recurso", description = "Gerenciamento de permissões entre perfil e recurso")
 public class PermissaoPerfilRecursoController {
 
 	@Autowired

@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 	@RestController
 	@RequestMapping("/perfis")
-	@Tag(name = "Perfis", description = "Operações de perfis")
+	@Tag(name = "C - Perfis", description = "Operações de perfis")
 	public class PerfilController {
 		
 		@Autowired

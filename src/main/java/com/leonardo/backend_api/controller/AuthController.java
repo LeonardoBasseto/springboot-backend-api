@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin
-@Tag(name = "Autenticação", description = "Endpoints de autenticação")
+@Tag(name = "A - Autenticação", description = "Endpoints de autenticação")
 public class AuthController {
 
     @Autowired

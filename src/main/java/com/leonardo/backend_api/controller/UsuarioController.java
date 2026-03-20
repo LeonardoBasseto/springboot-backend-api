@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/usuarios")
-@Tag(name = "Usuários", description = "Gerenciamento de usuários")
+@Tag(name = "B - Usuários", description = "Gerenciamento de usuários")
 public class UsuarioController {
 	
 	@Autowired

@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 	@RestController
 	@RequestMapping("/recursos")
-	@Tag(name = "Recursos", description = "Operações de recursos")
+	@Tag(name = "E Recursos", description = "Operações de recursos")
 	public class RecursoController {
 		
 		@Autowired
