@@ -1,10 +1,9 @@
 package com.leonardo.backend_api.controller;
 
-import java.util.List;
+import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,15 +36,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 		return recursoService.listarTodos();
 		}
 		
-		@Operation(summary = "Buscar recursos por ID", description = "Retorna o ID do recurso especificado")
-		@ApiResponses({
-		@ApiResponse(responseCode = "200", description = "Recurso encontrado"),
-		@ApiResponse(responseCode = "404", description = "Recurso não encontrado")
-		})
-		@GetMapping("/{id}")
-		public RecursoDTO buscarPorId(@PathVariable Long id){
-		    return recursoService.buscarPorId(id);
-		}
 		
 		@Operation(summary = "Inserir recursos", description = "Cria um novo recurso")
 		@ApiResponses({
@@ -68,16 +58,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 			return recursoService.alterar(id, recurso);
 		}
 		
-		@Operation(summary = "Excluir recurso", description = "Excluir os dados de um recurso")
-		@ApiResponses({
-		@ApiResponse(responseCode = "200", description = "Recurso excluido"),
-		@ApiResponse(responseCode = "404", description = "Recurso não encontrado")
-		})
-		@DeleteMapping("/{id}")
-		public ResponseEntity<Void> excluir(@PathVariable Long id){
-			recursoService.excluir(id);
-			return ResponseEntity.ok().build();
-		}
 	}
 
 
