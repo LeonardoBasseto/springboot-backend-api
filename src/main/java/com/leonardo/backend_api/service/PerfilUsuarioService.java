@@ -39,17 +39,6 @@ public class PerfilUsuarioService {
         return new PerfilUsuarioDTO(perfilUsuarioRepository.save(entity));
     }
 
-    public PerfilUsuarioDTO alterar(Long id, PerfilUsuarioDTO dto) {
-        PerfilUsuarioEntity entity = perfilUsuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("PerfilUsuario não encontrado: " + id));
-        UsuarioEntity usuario = usuarioRepository.findById(dto.getUsuarioId())
-                .orElseThrow(() -> new RuntimeException("Usuario não encontrado: " + dto.getUsuarioId()));
-        PerfilEntity perfil = perfilRepository.findById(dto.getPerfilId())
-                .orElseThrow(() -> new RuntimeException("Perfil não encontrado: " + dto.getPerfilId()));
-        entity.setUsuario(usuario);
-        entity.setPerfil(perfil);
-        return new PerfilUsuarioDTO(perfilUsuarioRepository.save(entity));
-    }
 
     public void excluir(Long id) {
         PerfilUsuarioEntity entity = perfilUsuarioRepository.findById(id)
